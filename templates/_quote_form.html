@@ -1,0 +1,22 @@
+<form method="post" action="{{ url_for('contact') }}" class="quote-request-form" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ quote_csrf_token }}">
+    <div class="two">
+        <label>Full Name *<input name="name" autocomplete="name" maxlength="100" value="{{ quote_form_data.name }}" required></label>
+        <label>Phone Number *<input name="phone" type="tel" autocomplete="tel" maxlength="30" pattern="[0-9+(). -]{7,30}" value="{{ quote_form_data.phone }}" required></label>
+    </div>
+    <div class="two">
+        <label>Email Address *<input type="email" name="email" autocomplete="email" maxlength="254" value="{{ quote_form_data.email }}" required></label>
+        <label>Organization / Hospital Name<input name="organization" maxlength="200" value="{{ quote_form_data.organization }}"></label>
+    </div>
+    <label>Product / Service Required
+        <select name="service" required>
+            <option value="" disabled {% if not quote_form_data.service %}selected{% endif %}>Select Product / Service</option>
+            {% for p in product_names %}<option value="{{ p }}" {% if quote_form_data.service == p %}selected{% endif %}>{{ p }}</option>{% endfor %}
+            <option value="Calibration" {% if quote_form_data.service == "Calibration" %}selected{% endif %}>Calibration</option>
+            <option value="Repair &amp; Support" {% if quote_form_data.service == "Repair & Support" %}selected{% endif %}>Repair &amp; Support</option>
+        </select>
+    </label>
+    <label>Requirement Details<textarea name="details" maxlength="5000" placeholder="Write your requirement here...">{{ quote_form_data.details }}</textarea></label>
+    <label>Upload (Optional)<input type="file" name="file"></label>
+    <button class="btn primary" type="submit">SUBMIT REQUEST</button>
+</form>

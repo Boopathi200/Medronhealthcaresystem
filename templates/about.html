@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block title %}About Us | Medron{% endblock %}{% block content %}
+<section class="page-hero about-hero"><video class="about-hero-video" autoplay muted loop playsinline aria-hidden="true" tabindex="-1"><source src="{{ url_for('static', filename='images/1024.mp4') }}" type="video/mp4"></video><div class="about-hero-content"><span class="eyebrow blue">ABOUT US</span><h1>About Medron<br>Healthcare Systems</h1><p>Medron Healthcare Systems is a trusted name in the field of medical equipment sales, service, and calibration. We are committed to delivering high-quality products and reliable services to hospitals, clinics, and healthcare institutions.</p></div></section>
+<section class="about-layout section"><div><span class="eyebrow blue">WHO WE ARE</span><h2>Trusted Healthcare Solutions</h2><p>We are committed to delivering high-quality products and reliable services to hospitals, clinics, and healthcare institutions.</p><a class="btn primary" href="{{url_for('contact')}}">LEARN MORE</a></div></section>
+<section class="mission section"><div class="info-card"><span class="big-icon">⚙</span><h3>Our Vision</h3><p> To establish Medron Healthcare Systems as a trusted and recognized provider of medical equipment solutions, committed to excellence in product quality, technical service, calibration accuracy, and building lasting customer relationships through trust, transparency, and a commitment to excellence.</p></div><div class="info-card"><span class="big-icon">◎</span>
+<h3>Our Mission</h3><ul><li> provide quality medical equipment that meets the evolving needs of hospitals, clinics, and healthcare institutions.</li>
+
+<li>To deliver reliable installation, maintenance, and technical support through professional expertise.</li>
+
+<li>To ensure accuracy and safety through dependable calibration and quality service practices.</li>
+
+<li>To build long-term customer relationships through trust, transparency, and commitment.</li>
+
+<li> To continuously improve our solutions by embracing innovation and advancing healthcare technology.</li></ul></div>
+<div class="info-card"><span class="big-icon">✓</span><h3>Our Values</h3><ul><li>Precision in Care</li><li>Trusted Sales</li><li>Reliable Service</li><li>Accurate Calibration</li></ul></div></section>
+<section class="why section"><div class="why-box"><h2>Why Choose Us?</h2><ul><li>Wide range of medical equipment from trusted brands</li><li>Expert team for sales, service & calibration</li><li>Quick response and 24/7 support</li><li>Customer satisfaction is our top priority</li></ul></div><div class="stats light-stats"><div><strong>10+</strong><span>Years of Experience</span></div><div><strong>1000+</strong><span>Happy Customers</span></div><div><strong>5000+</strong><span>Products Delivered</span></div><div><strong>24/7</strong><span>Service Support</span></div></div></section>{% endblock %}

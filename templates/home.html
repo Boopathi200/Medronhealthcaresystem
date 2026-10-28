@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Medron Healthcare Systems | Medical Equipment & Services{% endblock %}
+
+{% block content %}
+<div class="home-page">
+    <section class="home-hero">
+        <div class="home-medical-icons" aria-hidden="true">
+            <span class="home-medical-icon home-medical-icon-monitor">
+                <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="36" height="25" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 21h6l3-6 5 12 4-8 2 2h6M19 40h10m-5-7v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="home-medical-icon home-medical-icon-stethoscope">
+                <svg viewBox="0 0 48 48" fill="none"><path d="M14 8v11a8 8 0 0 0 16 0V8m-20 0h8m8 0h8M22 27v3a10 10 0 0 0 20 0v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="40" cy="21" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
+            </span>
+            <span class="home-medical-icon home-medical-icon-bed">
+                <svg viewBox="0 0 48 48" fill="none"><path d="M7 36V13m0 18h34v5M7 22h12a6 6 0 0 1 6 6v3m16 0V20H25M7 36v4m34-4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="17" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
+            </span>
+            <span class="home-medical-icon home-medical-icon-pulse">
+                <svg viewBox="0 0 48 48" fill="none"><path d="M5 25h9l5-12 8 23 6-15 4 4h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="home-medical-icon home-medical-icon-lungs">
+                <svg viewBox="0 0 48 48" fill="none"><path d="M23 11v14m2-14v14m-3-5c-4-7-6-9-8-8-3 2-7 13-7 19 0 5 3 8 8 7 6-1 9-6 9-13m3-5c4-7 6-9 8-8 3 2 7 13 7 19 0 5-3 8-8 7-6-1-9-6-9-13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="home-medical-icon home-medical-icon-kit">
+                <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="15" width="36" height="26" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M17 15v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4m-7 7v12m-6-6h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+        </div>
+        <div class="home-hero-copy">
+            <span class="home-kicker"><i></i> MEDICAL EQUIPMENT'S ACCESSORIES &amp; FURNITURE</span>
+            <h1>Precision in Care,<br>Trusted Sales,<br>Reliable Service,<br><em>Accurate Calibration</em></h1>
+            <p>Your trusted partner for Medical Equipment, Furniture, Sales, Service &amp; Calibration.</p>
+            <div class="home-actions">
+                <a class="home-button home-button-primary" href="{{ url_for('products') }}">EXPLORE PRODUCTS <span>→</span></a>
+                <a class="home-button home-button-light" href="{{ url_for('services') }}">OUR SERVICES</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-trust" aria-label="Medron advantages">
+        <div><b class="home-icon">✦</b><span><strong>Quality Products</strong><small>Premium &amp; Trusted Brands</small></span></div>
+        <div><b class="home-icon">⚙</b><span><strong>Expert Services</strong><small>Reliable &amp; Timely Support</small></span></div>
+        <div><b class="home-icon">◎</b><span><strong>Calibration Support</strong><small>Enquire about equipment needs</small></span></div>
+        <div><b class="home-icon">♡</b><span><strong>Customer Satisfaction</strong><small>Always Here to Help</small></span></div>
+    </section>
+
+    <section class="home-section home-categories">
+        <div class="home-section-heading"><div><span class="home-eyebrow">PRODUCT RANGE</span><h2>Our Product Categories</h2></div><a href="{{ url_for('products') }}">View All Products <span>→</span></a></div>
+        <div class="home-category-grid">
+            
+{% for c in categories %}
+<a class="home-category-card" href="{{ url_for('products', category=c.name) }}">
+    <div class="home-category-image">
+        {% if 'critical' in c.name|lower or 'monitor' in c.name|lower %}
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><rect x="6" y="7" width="36" height="27" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M11 21h7l3-6 5 13 4-8 3 2h4M18 41h12m-6-7v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        {% elif 'home care' in c.name|lower or 'basic' in c.name|lower %}
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="M24 6v36m-18-18h36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="1.8"/></svg>
+        {% elif 'ot table' in c.name|lower %}
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="M7 15h34M12 15v8m24-8v8M9 23h30l3 7H6l3-7Zm3 7v7m24-7v7M10 37h28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 10h6m-3-3v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        {% elif 'furniture' in c.name|lower or 'cot' in c.name|lower %}
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="M7 36V13m0 18h34v5M7 22h12a6 6 0 0 1 6 6v3m16 0V20H25M7 36v4m34-4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="17" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
+        {% elif 'physio' in c.name|lower %}
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.8"/><path d="M8 25h9l5-12 7 22 5-13 3 3h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        {% elif 'respiratory' in c.name|lower or 'repiratory' in c.name|lower %}
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="M23 9v15m2-15v15m-3-5c-4-7-6-9-8-8-3 2-7 13-7 19 0 5 3 8 8 7 6-1 9-6 9-13m3-5c4-7 6-9 8-8 3 2 7 13 7 19 0 5-3 8-8 7-6-1-9-6-9-13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        {% else %}
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><rect x="7" y="14" width="34" height="27" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M17 14v-3a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3m-7 7v13m-6-6h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        {% endif %}
+    </div>
+
+    <div class="home-category-meta">
+        <h3>{{ c.name }}</h3>
+        <span>Explore range <b>↗</b></span>
+    </div>
+</a>
+{% endfor %}
+
+        </div>
+    </section>
+
+    <section class="home-stats">
+        <div><b>10+</b><span>Years of Experience</span></div><i></i><div><b>1000+</b><span>Happy Customers</span></div><i></i><div><b>5000+</b><span>Products Delivered</span></div><i></i><div><b>24/7</b><span>Service Support</span></div>
+    </section>
+
+    <section class="home-section home-support">
+        <div class="home-support-intro"><span class="home-eyebrow">OUR SERVICES</span><h2>Complete Support <em>for Better Healthcare</em></h2><p>From equipment selection and installation to maintenance, repair and calibration, our experienced team supports every stage of the equipment lifecycle.</p><a class="home-button home-button-primary" href="{{ url_for('services') }}">EXPLORE OUR SERVICES <span>→</span></a></div>
+        <div class="home-service-list">
+            <div><b>01</b><span><strong>Sales &amp; Supply</strong><small>Reliable medical equipment from trusted brands.</small></span></div>
+            <div><b>02</b><span><strong>Installation &amp; Commissioning</strong><small>Professional installation and commissioning support.</small></span></div>
+            <div><b>03</b><span><strong>Preventive Maintenance</strong><small>Planned maintenance to keep equipment dependable.</small></span></div>
+            <div><b>04</b><span><strong>Repair &amp; Support</strong><small>Responsive technical assistance when you need it.</small></span></div>
+            <div><b>05</b><span><strong>Calibration</strong><small>Enquire about equipment calibration support.</small></span></div>
+        </div>
+        <img class="home-support-image" src="{{ url_for('static', filename='images/service.png') }}" alt="Medron service technician supporting medical equipment">
+    </section>
+
+    <section class="home-why"><div class="home-section-heading"><div><span class="home-eyebrow">WHY MEDRON</span><h2>Built Around <em>Your Confidence</em></h2></div><p>We focus on quality, reliability and long-term support, helping healthcare professionals make the right equipment choices.</p></div><div class="home-why-grid"><article><b>✦</b><h3>Quality Products</h3><p>Carefully selected medical equipment focused on quality and dependable performance.</p></article><article><b>⚙</b><h3>Expert Support</h3><p>Professional installation, maintenance and technical support whenever you need it.</p></article><article><b>◎</b><h3>Precision Calibration</h3><p>Accurate calibration support to help maintain reliable equipment performance.</p></article><article><b>♡</b><h3>Customer First</h3><p>Long-term relationships built through responsive service and dependable solutions.</p></article></div></section>
+
+    <section class="home-cta"><div><span class="home-eyebrow">LET'S WORK TOGETHER</span><h2>Looking for the Right <em>Medical Equipment?</em></h2><p>Tell us what you need and our team will help you find the right solution for your healthcare environment.</p></div><div><a class="home-button home-button-white" href="{{ url_for('contact', _anchor='request-quote') }}">REQUEST A QUOTE <span>→</span></a><a class="home-button home-button-outline" href="{{ url_for('contact') }}">CONTACT US</a></div></section>
+</div>
+
+{% endblock %}

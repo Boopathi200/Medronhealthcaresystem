@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Medron Healthcare Systems{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-motion.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home-visual.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <span>8/105/1, Visaka Nagar, Thennampalayam, Coimbatore – 641407</span>
+        <span>{{ config['CONTACT_EMAIL'] }} | GST - 33ACGFM7202A1ZV</span>
+    </div>
+    <header class="header">
+        <a class="brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/medon-logo .jpeg') }}" alt="Medron logo">
+            <div><strong>MEDRON</strong><span>HEALTHCARE SYSTEMS</span></div>
+        </a>
+        <button class="menu-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+        <nav id="nav" aria-label="Main navigation">
+            <a class="{{ 'active' if request.endpoint == 'home' }}" href="{{ url_for('home') }}">HOME</a>
+            <a class="{{ 'active' if request.endpoint == 'about' }}" href="{{ url_for('about') }}">ABOUT US</a>
+            <a class="{{ 'active' if request.endpoint == 'products' }}" href="{{ url_for('products') }}">PRODUCTS</a>
+            <a class="{{ 'active' if request.endpoint == 'services' }}" href="{{ url_for('services') }}">SERVICES</a>
+            <a class="{{ 'active' if request.endpoint == 'calibration' }}" href="{{ url_for('calibration') }}">CALIBRATION</a>
+            <a class="{{ 'active' if request.endpoint == 'contact' }}" href="{{ url_for('contact') }}">CONTACT</a>
+        </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        <div class="flash {{ category }}" role="{{ 'alert' if category == 'error' else 'status' }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="{{ url_for('static', filename='images/medon-logo .jpeg') }}" alt="Medron Healthcare Systems">
+                <div>
+                    <b>MEDRON HEALTHCARE SYSTEMS</b>
+                    <p>Precision in Care, Trusted Sales, Reliable Service, Accurate Calibration.</p>
+                </div>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('products') }}">Products</a>
+                <a href="{{ url_for('services') }}">Services</a>
+                <a href="{{ url_for('calibration') }}">Calibration</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('contact', _anchor='request-quote') }}">Request Quote</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Sales: <a href="{{ phone_href(config['SALES_PHONE']) }}">{{ config['SALES_PHONE'] }}</a></p>
+                <p>Equipment: <a href="{{ phone_href(whatsapp_phone_display()) }}">{{ whatsapp_phone_display() }}</a></p>
+                <p><a href="mailto:{{ config['CONTACT_EMAIL'] }}">{{ config['CONTACT_EMAIL'] }}</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Medron Healthcare Systems. All Rights Reserved.</div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Medical Equipment Calibration | Medron{% endblock %}
+{% block content %}
+<section class="calibration-hero">
+    <div class="calibration-hero-content">
+        <span class="eyebrow blue">CALIBRATION SUPPORT</span>
+        <h1>Medical Equipment Calibration Services</h1>
+        <p>Supporting the accuracy, reliability, and performance of medical equipment through professional calibration services.</p>
+        <div class="calibration-hero-actions">
+            <a class="btn whatsapp-btn" href="{{ whatsapp_url('Hello Medron Healthcare Systems, I would like to enquire about medical equipment calibration. Please share the available services, pricing, and service process. Website: ' ~ public_site_url()) }}" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+            <a class="btn primary" href="{{ url_for('contact') }}">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<section class="calibration-services section">
+    <div class="calibration-section-heading">
+        <span class="eyebrow blue">SERVICE ENQUIRIES</span>
+        <h2>Equipment calibration enquiries</h2>
+        <p>These are enquiry categories, not a guarantee of service availability. Contact us to confirm support for your equipment and location.</p>
+    </div>
+    <div class="calibration-service-grid">
+        {% for name in [
+            "Patient Monitor Calibration",
+            "ECG Machine Calibration",
+            "Infusion Pump Calibration",
+            "Syringe Pump Calibration",
+            "Defibrillator Testing and Calibration",
+            "Other Medical Equipment Calibration"
+        ] %}
+        <article class="calibration-service-card">
+            <span class="calibration-service-number">{{ "%02d"|format(loop.index) }}</span>
+            <h3>{{ name }}</h3>
+            <p>Ask our team about availability, equipment requirements, and a quotation.</p>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="calibration-why section">
+    <div>
+        <span class="eyebrow blue">WHY CALIBRATION MATTERS</span>
+        <h2>Supporting dependable equipment performance</h2>
+        <p>Calibration can help healthcare teams assess whether equipment readings and output remain accurate. Regular attention to equipment performance can support reliability, informed maintenance decisions, and day-to-day patient care.</p>
+    </div>
+    <div class="calibration-why-points">
+        <article><strong>Accuracy</strong><p>Help assess measurement and output performance.</p></article>
+        <article><strong>Reliability</strong><p>Support dependable equipment use through appropriate checks.</p></article>
+        <article><strong>Maintenance</strong><p>Identify when further inspection or service may be needed.</p></article>
+    </div>
+</section>
+
+<section class="calibration-process section">
+    <div class="calibration-section-heading">
+        <span class="eyebrow blue">HOW IT WORKS</span>
+        <h2>A clear enquiry process</h2>
+    </div>
+    <ol class="calibration-process-list">
+        <li><span>1</span><div><strong>Submit a service enquiry</strong><p>Tell us what equipment you need help with.</p></div></li>
+        <li><span>2</span><div><strong>Share equipment details and location</strong><p>Provide the make, model, and service location where available.</p></div></li>
+        <li><span>3</span><div><strong>Confirm availability and quotation</strong><p>Our team will discuss whether the requested service is available and provide a quotation.</p></div></li>
+        <li><span>4</span><div><strong>Arrange the service after confirmation</strong><p>We’ll coordinate next steps once the details and quotation are agreed.</p></div></li>
+    </ol>
+</section>
+
+<section class="calibration-cta">
+    <span class="eyebrow">START A CONVERSATION</span>
+    <h2>Ask us about calibration support</h2>
+    <p>Share your equipment details and our team will help you understand the available next steps.</p>
+    <div class="calibration-cta-actions">
+        <a class="btn whatsapp-btn" href="{{ whatsapp_url('Hello Medron Healthcare Systems, I would like to enquire about medical equipment calibration. Please share the available services, pricing, and service process. Website: ' ~ public_site_url()) }}" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+        <a class="btn light" href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+</section>
+{% endblock %}

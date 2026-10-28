@@ -1,0 +1,107 @@
+.home-hero{
+    position:relative;
+    display:flex;
+    align-items:center;
+    min-height:clamp(440px,48vw,610px);
+    padding:clamp(64px,8vw,108px) max(6%,calc((100vw - 1320px)/2));
+    overflow:hidden;
+    isolation:isolate;
+    background-image:url("../images/hero.png");
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.home-hero:after{content:none}
+.home-hero-copy{position:relative;z-index:2;width:min(100%,760px);max-width:760px;padding:0}
+.home-hero .home-kicker{padding:8px 13px;border:1px solid transparent;border-radius:999px;background:rgba(255,255,255,.48);color:#087383}
+.home-hero .home-kicker i{background:#020111}
+.home-hero h1{margin:22px 0 17px;color:#123b54;font-size:clamp(36px,4.8vw,60px);line-height:1.08;letter-spacing:-1.5px}
+.home-hero h1 em{color:#3e38a6}
+.home-hero p{max-width:500px;color:#526e7f;font-size:16px;line-height:1.7}
+.home-actions{gap:12px;margin-top:28px}
+.home-hero .home-button{min-height:47px;padding:0 20px;border-radius:7px;font-size:11px;transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease}
+.home-hero .home-button-primary{background:#080a83;box-shadow:0 7px 18px #087f8325}
+.home-hero .home-button-primary:hover{background:#0d0670}
+.home-hero .home-button-light{border-color:#c9dcdf;background:#fff;color:#16445a}
+.home-hero .home-button-light:hover{border-color:#0e0883;color:#080a83}
+.home-medical-icons{position:absolute;z-index:1;inset:0;overflow:hidden;pointer-events:none}
+.home-medical-icon{position:absolute;display:block;width:clamp(46px,6vw,82px);height:clamp(46px,6vw,82px);color:#174b75;opacity:0;animation:homeMedicalIconSequence 24s ease-in-out infinite}
+.home-medical-icon svg{display:block;width:100%;height:100%;stroke:currentColor;stroke-width:1.5}
+.home-medical-icon-monitor{top:16%;left:74%;animation-delay:0s}
+.home-medical-icon-stethoscope{top:59%;left:87%;animation-delay:4s}
+.home-medical-icon-bed{top:39%;left:64%;animation-delay:8s}
+.home-medical-icon-pulse{top:72%;left:69%;animation-delay:12s}
+.home-medical-icon-lungs{top:12%;left:91%;animation-delay:16s}
+.home-medical-icon-kit{top:43%;left:82%;animation-delay:20s}
+@keyframes homeMedicalIconSequence{
+    0%,2%{opacity:0;transform:translate3d(0,16px,0) scale(.94)}
+    5%{opacity:.2;transform:translate3d(0,0,0) scale(1)}
+    12%{opacity:.2;transform:translate3d(0,-7px,0) scale(1.02)}
+    16%,100%{opacity:0;transform:translate3d(0,-17px,0) scale(.98)}
+}
+.home-category-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px}
+.home-category-card{min-height:112px;display:grid;grid-template-columns:68px minmax(0,1fr);align-items:center;gap:16px;padding:17px;border-color:#e1ecee;border-radius:12px;box-shadow:0 5px 18px #123b540a;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,opacity .5s ease}
+.home-category-card:hover{transform:translateY(-4px);border-color:#a8d8d5;box-shadow:0 12px 25px #123b5412}
+.home-category-image{width:68px;height:68px;background:#edf7f7;color:#160883;transition:background .22s ease,color .22s ease}
+.home-category-card:hover .home-category-image{background:#dff1ef;color:#066d70}
+.home-category-image svg{display:block;width:34px;height:34px;stroke:currentColor;stroke-width:1.8;animation:homeCategoryFloat 4s ease-in-out infinite;transition:scale .3s ease}
+.home-category-card:nth-child(6n + 2) .home-category-image svg{animation-delay:-.7s}
+.home-category-card:nth-child(6n + 3) .home-category-image svg{animation-delay:-1.4s}
+.home-category-card:nth-child(6n + 4) .home-category-image svg{animation-delay:-2.1s}
+.home-category-card:nth-child(6n + 5) .home-category-image svg{animation-delay:-2.8s}
+.home-category-card:nth-child(6n) .home-category-image svg{animation-delay:-3.5s}
+.home-category-card:hover .home-category-image svg{scale:1.08}
+.home-categories.is-observing .home-category-card:not(.is-visible){opacity:0;transform:translateY(14px)}
+.home-category-card.is-visible{transition-delay:var(--category-reveal-delay,0ms)}
+@keyframes homeCategoryFloat{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+.home-category-meta{min-width:0;padding:0}
+.home-category-meta h3{margin:0 0 7px;color:#070707;font-size:14px;line-height:1.35}
+.home-category-meta span{color:#6b8491;font-size:12px}
+.home-category-meta b{color:#087f83;transition:transform .22s ease}
+.home-category-card:hover .home-category-meta b{display:inline-block;transform:translateX(3px)}
+
+@media(max-width:950px){
+    .home-hero{
+        background-image:linear-gradient(90deg,rgba(248,252,255,.96) 0%,rgba(248,252,255,.86) 58%,rgba(248,252,255,.28) 100%),url("../images/hero.png");
+        background-position:left center,20% center;
+        background-size:cover,cover;
+        background-repeat:no-repeat,no-repeat;
+    }
+    .home-hero-copy{max-width:48%}
+}
+
+@media(max-width:760px){
+    .home-hero{min-height:430px;padding:64px 7%}
+    .home-hero-copy{max-width:620px}
+    .home-hero h1{font-size:clamp(34px,7vw,48px)}
+    .home-hero p{max-width:440px;font-size:15px}
+    .home-medical-icon{width:clamp(42px,9vw,62px);height:clamp(42px,9vw,62px)}
+    .home-medical-icon-monitor{top:12%;left:77%}
+    .home-medical-icon-stethoscope{top:64%;left:84%}
+    .home-medical-icon-bed{top:41%;left:75%}
+    .home-medical-icon-pulse{top:81%;left:65%}
+    .home-medical-icon-lungs{top:9%;left:88%}
+    .home-medical-icon-kit{top:50%;left:91%}
+    .home-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .home-category-card{grid-template-columns:54px minmax(0,1fr);gap:12px;min-height:96px;padding:12px}
+    .home-category-image{width:54px;height:54px}
+    .home-category-image svg{width:29px;height:29px}
+    .home-category-meta h3{font-size:13px}
+}
+@media(max-width:430px){
+    .home-hero{min-height:410px;padding:54px 6%}
+    .home-hero h1{font-size:32px;letter-spacing:-.8px}
+    .home-hero p{font-size:14px}
+    .home-actions{flex-wrap:wrap}
+    .home-hero .home-button{min-height:43px;padding:0 14px;font-size:10px}
+    .home-category-grid{grid-template-columns:1fr}
+    .home-category-card{min-height:88px}
+    .home-medical-icon{width:42px;height:42px}
+}
+@media(prefers-reduced-motion:reduce){
+    .home-medical-icon{animation:none}
+    .home-category-card,.home-category-image,.home-category-image svg,.home-hero .home-button,.home-category-meta b{animation:none;transition:none}
+    .home-category-card.is-visible,.home-category-card:hover .home-category-image svg{scale:1}
+    .home-categories.is-observing .home-category-card:not(.is-visible){opacity:1;transform:none}
+    .home-category-card:hover{transform:none}
+}

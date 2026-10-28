@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Products | Medron{% endblock %}
+{% block content %}
+<section class="page-hero compact">
+    <span class="eyebrow blue">PRODUCTS</span>
+    <h1>Our Products</h1>
+    <p>A wide range of high-quality medical equipment and furniture for all your healthcare needs.</p>
+</section>
+
+<section class="products-layout section">
+    <aside class="filters" aria-label="Product categories">
+        <h3>Product Categories</h3>
+        <a class="{{ 'selected' if not selected }}" href="{{ url_for('products') }}">All Products</a>
+        {% for c in categories %}
+        <a class="{{ 'selected' if selected == c.name }}" href="{{ url_for('products', category=c.name) }}">{{ c.name }}</a>
+        {% endfor %}
+    </aside>
+
+    <div class="product-area">
+        <div class="product-grid">
+            {% for p in products %}
+            <article class="product-card"
+                     role="button"
+                     tabindex="0"
+                     aria-haspopup="dialog"
+                     data-name="{{ p.name }}"
+                     data-category="{{ p.category }}"
+                     data-image="{{ public_static_url('images/' + p.image) }}"
+                     data-description="{{ p.description|default('', true) }}"
+                     data-specifications="{{ p.specifications|default('', true) }}"
+                     data-whatsapp-url="{{ whatsapp_url('Hello Medron Healthcare Systems, I am interested in ' ~ p.name ~ '. Please share the price, specifications, availability, and quotation. Product image: ' ~ public_static_url('images/' + p.image) ~ '. Website: ' ~ public_site_url()) }}">
+                <div class="product-img">
+                    <img src="{{ url_for('static', filename='images/' + p.image) }}" alt="{{ p.name }}">
+                </div>
+                <h3>{{ p.name }}</h3>
+                <span>{{ p.category }}</span>
+            </article>
+            {% else %}
+            <p class="products-empty">No products with available images were found in this category.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="help-banner">
+    <div>
+        <h2>Need Help Choosing the Right Product?</h2>
+        <p>Our experts are here to help you find the perfect solution.</p>
+    </div>
+    <a class="btn light" href="{{ url_for('contact', _anchor='request-quote') }}">REQUEST A QUOTE</a>
+</section>
+
+<div id="productModal" class="product-modal" aria-hidden="true">
+    <div class="product-popup" role="dialog" aria-modal="true" aria-labelledby="popupName" aria-describedby="typedDetails" tabindex="-1">
+        <button class="popup-close" type="button" data-close-product aria-label="Close product details">&times;</button>
+        <img id="popupImage" src="" alt="">
+        <div class="popup-content">
+            <span id="popupCategory" class="eyebrow blue"></span>
+            <h2 id="popupName"></h2>
+            <p id="popupDescription" class="popup-description" hidden></p>
+            <p id="popupSpecifications" class="popup-specifications" hidden></p>
+            <div id="typedDetails"></div>
+            <div class="popup-actions">
+                <a id="popupWhatsapp" class="btn whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
+                    Enquire on WhatsApp
+                </a>
+                <a class="btn primary" href="{{ url_for('contact', _anchor='request-quote') }}">REQUEST A QUOTE</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
